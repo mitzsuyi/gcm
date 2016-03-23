@@ -1,6 +1,5 @@
 module Gcm
   LocalBroadcastManager = Android::Support::V4::Content::LocalBroadcastManager
-  GoogleApiAvailability = Com::Google::Android::Gms::Common::GoogleApiAvailability
   PLAY_SERVICES_RESOLUTION_REQUEST = 9000
   def init_gcm 
     init_broadcast_receiver
@@ -34,22 +33,6 @@ module Gcm
     @registration_broadcast_receiver = GcmRegistrationBroadcastReceiver.new 
   end 
   def checkPlayServices
-    apiAvailability = GoogleApiAvailability.getInstance
-    resultCode = apiAvailability::isGooglePlayServicesAvailable self
-    if resultCode != Com::Google::Android::Gms::Common::ConnectionResult::SUCCESS
-      if apiAvailability::isUserResolvableError resultCode
-        apiAvailability::getErrorDialog(
-            self, 
-            resultCode, 
-            PLAY_SERVICES_RESOLUTION_REQUEST
-          ).show                     
-      else 
-        @play_services_error = "This device is not supported."
-      end 
-      false
-    else 
-      p "play services available"
-      true   
-    end            
+    true
   end 
 end   

@@ -7,9 +7,9 @@ Bundler.require
 Motion::Project::App.setup do |app|
   # Use `rake config' to see complete project settings.
   app.name = 'gcm'
-    app.development { app.archs = ["x86"] unless ARGV.include?("device") || ARGV.include?("archive") }
+  app.development { app.archs = ["x86"] unless ARGV.include?("device") || ARGV.include?("archive") }
   app.package = "as.gcm"
-   app.manifest_entry('uses-permission', :name => 'com.google.android.providers.gsf.permission.READ_GSERVICES')
+  app.manifest_entry('uses-permission', :name => 'com.google.android.providers.gsf.permission.READ_GSERVICES')
   app.files = (app.files + Dir["./lib/**/*.rb"]).flatten
 
   # Enable the Google Play Services library in the manifest file.
